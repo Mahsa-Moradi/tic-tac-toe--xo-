@@ -91,7 +91,7 @@ function Form() {
 function Squares({ value, onSquareClick }) {
   return (
     <button type="text" className="table" onclick={onSquareClick}>
-      {value}
+      {value}njn
     </button>
   );
 }
@@ -100,10 +100,10 @@ function Squares({ value, onSquareClick }) {
 function Bord({ xIsNext, squares, onPlay }) {
   // ............................ XInput
   function handleClick(i) {
-    if (Lineswinner(Squares) || Squares[i]) {
+    if (Lineswinner(squares) || squares[i]) {
       return;
     }
-    const nextSquars = Squares.slice();
+    const nextSquars = squares.slice();
     if (xIsNext) {
       nextSquars[i] = "X";
     } else {
@@ -111,7 +111,7 @@ function Bord({ xIsNext, squares, onPlay }) {
     }
     // setXInput(nextSquars);
     // setSquares(XInput);
-    onPlay(nextSquars);
+    onPlay(nextSquars[i]);
   }
   //   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  ???????
   //   // ............................ namePlayer
@@ -248,21 +248,18 @@ function Bord({ xIsNext, squares, onPlay }) {
             {/* 1 */}
             <div className="row m-t">
               <Squares
-                className="table"
                 value={Squares[0]}
                 onSquareClick={() => {
                   handleClick(0);
                 }}
               />
               <Squares
-                className="table"
                 value={Squares[1]}
                 onSquareClick={() => {
                   handleClick(1);
                 }}
               />
               <Squares
-                className="table"
                 value={Squares[2]}
                 onSquareClick={() => {
                   handleClick(2);
@@ -272,21 +269,18 @@ function Bord({ xIsNext, squares, onPlay }) {
             {/* 2 */}
             <div className="row">
               <Squares
-                className="table"
                 value={Squares[3]}
                 onSquareClick={() => {
                   handleClick(3);
                 }}
               />
               <Squares
-                className="table"
                 value={Squares[4]}
                 onSquareClick={() => {
                   handleClick(4);
                 }}
               />
               <Squares
-                className="table"
                 value={Squares[5]}
                 onSquareClick={() => {
                   handleClick(5);
@@ -296,21 +290,18 @@ function Bord({ xIsNext, squares, onPlay }) {
             {/* 3 */}
             <div className="m-b row">
               <Squares
-                className="table"
                 value={Squares[6]}
                 onSquareClick={() => {
                   handleClick(6);
                 }}
               />
               <Squares
-                className="table"
                 value={Squares[7]}
                 onSquareClick={() => {
                   handleClick(7);
                 }}
               />
               <Squares
-                className="table"
                 value={Squares[8]}
                 onSquareClick={() => {
                   handleClick(8);

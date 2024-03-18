@@ -290,6 +290,7 @@ div .dot::before {
   -o-border-radius: 20px;
 }
 .table {
+  cursor: pointer;
   padding: 70px;
   margin: 5px;
   background-color: rgba(33, 31, 48, 0.953);
@@ -330,12 +331,13 @@ div .dot::before {
 }
 .inputname,
 .winplayer {
-  border-width: 0 0 1px 0;
-  border-style: solid;
-  border-color: rgb(85, 85, 85);
+  /* border-width: 0 0 1px 0; */
+  /* border-style: solid; */
+  /* border-color: rgb(85, 85, 85); */
   /* box-shadow: 1px 1px 3px rgb(204, 206, 252); */
   color: white;
   margin-bottom: 5px;
+  display: flex
 
 }
 .Next-player , .winplayer{
@@ -346,7 +348,7 @@ div .dot::before {
   display: flex;
   flex-direction: row;
   gap: 0px 40px;
-  vertical-align: middle;
+  /* vertical-align: middle; */
 }
 .player p {
   color: white;
