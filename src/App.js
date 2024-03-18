@@ -90,7 +90,7 @@ function Form() {
 // ******************************************** Squars
 function Squares({ value, onSquareClick }) {
   return (
-    <button type="text" onclick={onSquareClick}>
+    <button type="text" className="table" onclick={onSquareClick}>
       {value}
     </button>
   );
@@ -115,13 +115,13 @@ function Bord({ xIsNext, squares, onPlay }) {
   }
   //   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  ???????
   //   // ............................ namePlayer
-  function namePlayer(players, XName, OName) {
-    if (xIsNext) {
-      XName = players.x;
-    } else {
-      OName = players.o;
-    }
-  }
+  // function namePlayer(players, XName, OName) {
+  //   if (xIsNext) {
+  //     XName = players.x;
+  //   } else {
+  //     OName = players.o;
+  //   }
+  // }
   // ******************************************************* NumberScore
   //   function scoreXO(XName, OName) {
   //     const Winner = Lineswinner(Squares);
@@ -184,7 +184,7 @@ function Bord({ xIsNext, squares, onPlay }) {
   //___________________________________________________return
   return (
     <>
-      <div className="container">
+      <div>
         {/*start babel */}
         <section className="wrapper">
           <div>
@@ -219,73 +219,108 @@ function Bord({ xIsNext, squares, onPlay }) {
           </div>
         </section>
         {/*end babel */}
-        <p>Next plaer:{status}</p>
-        {/* <p>Next plaer:{namePlayer}</p> */}
-        <div className="column"></div>
-        {/* 1 */}
-        <div className="board-box row">
-          <Squares
-            value={Squares[0]}
-            onSquareClick={() => {
-              handleClick(0);
-            }}
-          />
-          <Squares
-            value={Squares[1]}
-            onSquareClick={() => {
-              handleClick(1);
-            }}
-          />
-          <Squares
-            value={Squares[2]}
-            onSquareClick={() => {
-              handleClick(2);
-            }}
-          />
+        <div className="container board-flex ">
+          <div className="information">
+            {/* .......... 1 */}
+            <div>
+              {/* 1 a*/}
+              <div className=" player">
+                <p className="Next-player ">{status}</p>
+                <span className="playerCircle"></span>
+              </div>
+              {/* 1 b */}
+              <div className="winplayer">{status}</div>
+            </div>
+            {/* ............ 2 */}
+            <div>
+              {/* 2 a*/}
+              <div className=" player">
+                <p className="Next-player ">{status}</p>
+                <span className="playerCircle"></span>
+              </div>
+              {/* 2 b */}
+              <div className="winplayer">knkjn{status}</div>
+            </div>
+          </div>
+
+          {/* ........................................... board */}
+          <div className=" board ">
+            {/* 1 */}
+            <div className="row m-t">
+              <Squares
+                className="table"
+                value={Squares[0]}
+                onSquareClick={() => {
+                  handleClick(0);
+                }}
+              />
+              <Squares
+                className="table"
+                value={Squares[1]}
+                onSquareClick={() => {
+                  handleClick(1);
+                }}
+              />
+              <Squares
+                className="table"
+                value={Squares[2]}
+                onSquareClick={() => {
+                  handleClick(2);
+                }}
+              />
+            </div>
+            {/* 2 */}
+            <div className="row">
+              <Squares
+                className="table"
+                value={Squares[3]}
+                onSquareClick={() => {
+                  handleClick(3);
+                }}
+              />
+              <Squares
+                className="table"
+                value={Squares[4]}
+                onSquareClick={() => {
+                  handleClick(4);
+                }}
+              />
+              <Squares
+                className="table"
+                value={Squares[5]}
+                onSquareClick={() => {
+                  handleClick(5);
+                }}
+              />
+            </div>
+            {/* 3 */}
+            <div className="m-b row">
+              <Squares
+                className="table"
+                value={Squares[6]}
+                onSquareClick={() => {
+                  handleClick(6);
+                }}
+              />
+              <Squares
+                className="table"
+                value={Squares[7]}
+                onSquareClick={() => {
+                  handleClick(7);
+                }}
+              />
+              <Squares
+                className="table"
+                value={Squares[8]}
+                onSquareClick={() => {
+                  handleClick(8);
+                }}
+              />
+            </div>
+            <Lineswinner />
+          </div>
         </div>
-        {/* 2 */}
-        <div className="board-box row">
-          <Squares
-            value={Squares[3]}
-            onSquareClick={() => {
-              handleClick(3);
-            }}
-          />
-          <Squares
-            value={Squares[4]}
-            onSquareClick={() => {
-              handleClick(4);
-            }}
-          />
-          <Squares
-            value={Squares[5]}
-            onSquareClick={() => {
-              handleClick(5);
-            }}
-          />
-        </div>
-        {/* 3 */}
-        <div className="board-box row" b>
-          <Squares
-            value={Squares[6]}
-            onSquareClick={() => {
-              handleClick(6);
-            }}
-          />
-          <Squares
-            value={Squares[7]}
-            onSquareClick={() => {
-              handleClick(7);
-            }}
-          />
-          <Squares
-            value={Squares[8]}
-            onSquareClick={() => {
-              handleClick(8);
-            }}
-          />
-        </div>
-        <Lineswinner />
+        {/* ... end */}
       </div>
     </>
   );
