@@ -90,8 +90,8 @@ function Form() {
 // ******************************************** Squars
 function Squares({ value, onSquareClick }) {
   return (
-    <button type="text" className="table" onclick={onSquareClick}>
-      {value}njn
+    <button  className="table" onclick={onSquareClick}>
+      {value}
     </button>
   );
 }
@@ -103,15 +103,15 @@ function Bord({ xIsNext, squares, onPlay }) {
     if (Lineswinner(squares) || squares[i]) {
       return;
     }
-    const nextSquars = squares.slice();
+    const nextSquares = squares.slice();
     if (xIsNext) {
-      nextSquars[i] = "X";
+      nextSquares[i] = "X";
     } else {
-      nextSquars[i] = "O";
+      nextSquares[i] = "O";
     }
-    // setXInput(nextSquars);
+    // setXInput(nextSquares);
     // setSquares(XInput);
-    onPlay(nextSquars[i]);
+    onPlay(nextSquares[i]);
   }
   //   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  ???????
   //   // ............................ namePlayer
