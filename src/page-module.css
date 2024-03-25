@@ -264,6 +264,8 @@ div .dot::before {
   margin-top: 20px;
   flex-direction: column;
   z-index: 50;
+  /* background-color: aliceblue; */
+  width: 100%;
 }
 .row {
   width: 100%;
@@ -280,7 +282,7 @@ div .dot::before {
   margin: 10px 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(40, 35, 77, 0.332);
+  background-color: rgb(23, 20, 43);
   box-shadow: 1px 1px 150px rgba(231, 231, 231, 0.485);
   padding: 10px 30px;
   border-radius: 20px;
