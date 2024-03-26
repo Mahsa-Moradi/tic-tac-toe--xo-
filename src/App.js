@@ -90,31 +90,27 @@ function Form() {
 // ******************************************** Squars
 function Square({ value, onSquareClick }) {
   return (
-    <button className="table" onclick={onSquareClick}>
-      {value}gt
+    <button className="table" onClick={onSquareClick}>
+      {value}
     </button>
   );
 }
 // ********************************************** Bord
 
 function Board({ xIsNext, squares, onPlay }) {
-  function squares({ value, onSquareClick }) {
-    return (
-      <button className="table" onclick={onSquareClick}>
-        {value}
-      </button>
-    );
-  }
   // ............................ XInput
   function handleClick(i) {
     if (Lineswinner(squares) || squares[i]) {
       return;
     }
+    let xOPlay;
     const nextSquares = squares.slice();
     if (xIsNext) {
       nextSquares[i] = "X";
+      xOPlay = nextSquares[i];
     } else {
       nextSquares[i] = "O";
+      xOPlay = nextSquares[i];
     }
     // setXInput(nextSquares);
     // setSquares(XInput);
@@ -237,18 +233,13 @@ function Board({ xIsNext, squares, onPlay }) {
                 <span className="playerCircle"></span>
               </div>
               {/* 1 b */}
-              <div className="winplayer">{status}</div>
-            </div>
-            {/* ............ 2 */}
-            <div>
-              {/* 2 a*/}
-              <div className=" player">
-                <p className="Next-player ">{status}</p>
-                <span className="playerCircle"></span>
+              <div className="row-info">
+                <div className="winplayer">{status}</div>
+                <div className="winplayer">{status}</div>
               </div>
-              {/* 2 b */}
-              <div className="winplayer">knkjn{status}</div>
             </div>
+
+            {/* ............ 2 */}
           </div>
 
           {/* ........................................... board */}
@@ -325,7 +316,7 @@ function Board({ xIsNext, squares, onPlay }) {
   );
 }
 // ********************************* Lineswinner Squars
-function Lineswinner(Squares) {
+function Lineswinner(squares) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -338,8 +329,8 @@ function Lineswinner(Squares) {
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
-    if (Squares[a] && Squares[a] === Squares[b] && Squares[a] === Squares[c]) {
-      return Squares[a];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
     }
   }
   return null;
@@ -352,6 +343,7 @@ export default function Game() {
   const [currentMove, setCurrentMove] = useState(0);
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
+  // ............................... handlePlay
   function handlePlay(nextSquares) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     setHistory(nextHistory);
@@ -378,7 +370,7 @@ export default function Game() {
             squares={currentSquares}
             onPlay={handlePlay}
           />
-          <Lineswinner />
+          {/* <Lineswinner /> */}
         </div>
       </div>
     </>

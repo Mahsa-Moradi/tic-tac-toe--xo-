@@ -292,6 +292,7 @@ div .dot::before {
   -o-border-radius: 20px;
 }
 .table {
+  font-size: 20px;
   cursor: pointer;
   padding: 70px;
   margin: 5px;
@@ -330,6 +331,7 @@ div .dot::before {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
+  flex-direction: column;
 }
 .inputname,
 .winplayer {
@@ -350,29 +352,42 @@ div .dot::before {
   display: flex;
   flex-direction: row;
   gap: 0px 40px;
+  justify-content: center;
+  align-items: center;
   /* vertical-align: middle; */
+  border-bottom: 1px solid rgba(245, 222, 179, 0.412);
 }
 .player p {
   color: white;
 }
 .player span {
-  margin-top: 10px;
+  margin-top: -30px;
 }
 .playerCircle {
   display: flex;
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
+  /* vertical-align:50px; */
   background-color: rgb(255, 255, 255);
-  /* background-color: #0b0b0b; */
+  /*background-color: #0b0b0b;
+  */
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+.row-info {
+  display: flex;
+  flex-direction: row;
+  padding-top: 30px;
 }
 .winplayer {
-  flex-basis: 70%;
-  padding: 0 20px;
+  flex-basis: 50%;
+  display: flex;
+  /* text-align: center; */
+  justify-content: center;
 }
 .wincircle {
   background-color: rgb(215, 215, 215);
