@@ -182,9 +182,16 @@ function Board({ xIsNext, squares, onPlay }) {
   let status;
   if (winner) {
     status = "Winner: " + winner;
-  } else {
-    status = "Next player: " + (xIsNext ? "X" : "O");
   }
+   else if (xIsNext) {
+    status = "Next player: X";
+  } else {
+    status = "Next player: O";
+  }
+
+  // else {
+  //   status = "Next player: " + (xIsNext ? "X" : "O");
+  // }
   //___________________________________________________return
   return (
     <>
