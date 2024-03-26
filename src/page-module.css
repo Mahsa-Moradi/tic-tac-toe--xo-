@@ -296,7 +296,7 @@ div .dot::before {
   padding: 70px;
   margin: 5px;
   background-color: rgba(33, 31, 48, 0.953);
-  color: white;
+  color: rgb(255, 255, 255);
   box-shadow: 1px 1px 7px rgba(157, 156, 164, 0.419);
   border: 0px solid rgba(222, 221, 230, 0.193);
   border-radius: 10px;
@@ -339,10 +339,10 @@ div .dot::before {
   /* box-shadow: 1px 1px 3px rgb(204, 206, 252); */
   color: white;
   margin-bottom: 5px;
-  display: flex
-
+  display: flex;
 }
-.Next-player , .winplayer{
+.Next-player,
+.winplayer {
   color: white;
   margin-bottom: 40px;
 }

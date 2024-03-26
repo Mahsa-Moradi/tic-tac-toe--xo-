@@ -88,16 +88,23 @@ function Form() {
 }
 
 // ******************************************** Squars
-function Squares({ value, onSquareClick }) {
+function Square({ value, onSquareClick }) {
   return (
-    <button  className="table" onclick={onSquareClick}>
-      {value}
+    <button className="table" onclick={onSquareClick}>
+      {value}gt
     </button>
   );
 }
 // ********************************************** Bord
 
-function Bord({ xIsNext, squares, onPlay }) {
+function Board({ xIsNext, squares, onPlay }) {
+  function squares({ value, onSquareClick }) {
+    return (
+      <button className="table" onclick={onSquareClick}>
+        {value}
+      </button>
+    );
+  }
   // ............................ XInput
   function handleClick(i) {
     if (Lineswinner(squares) || squares[i]) {
@@ -111,7 +118,8 @@ function Bord({ xIsNext, squares, onPlay }) {
     }
     // setXInput(nextSquares);
     // setSquares(XInput);
-    onPlay(nextSquares[i]);
+    // onPlay(nextSquares[i]);
+    onPlay(nextSquares);
   }
   //   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  ???????
   //   // ............................ namePlayer
@@ -247,20 +255,20 @@ function Bord({ xIsNext, squares, onPlay }) {
           <div className=" board ">
             {/* 1 */}
             <div className="row m-t">
-              <Squares
-                value={Squares[0]}
+              <Square
+                value={squares[0]}
                 onSquareClick={() => {
                   handleClick(0);
                 }}
               />
-              <Squares
-                value={Squares[1]}
+              <Square
+                value={squares[1]}
                 onSquareClick={() => {
                   handleClick(1);
                 }}
               />
-              <Squares
-                value={Squares[2]}
+              <Square
+                value={squares[2]}
                 onSquareClick={() => {
                   handleClick(2);
                 }}
@@ -268,20 +276,20 @@ function Bord({ xIsNext, squares, onPlay }) {
             </div>
             {/* 2 */}
             <div className="row">
-              <Squares
-                value={Squares[3]}
+              <Square
+                value={squares[3]}
                 onSquareClick={() => {
                   handleClick(3);
                 }}
               />
-              <Squares
-                value={Squares[4]}
+              <Square
+                value={squares[4]}
                 onSquareClick={() => {
                   handleClick(4);
                 }}
               />
-              <Squares
-                value={Squares[5]}
+              <Square
+                value={squares[5]}
                 onSquareClick={() => {
                   handleClick(5);
                 }}
@@ -289,26 +297,26 @@ function Bord({ xIsNext, squares, onPlay }) {
             </div>
             {/* 3 */}
             <div className="m-b row">
-              <Squares
-                value={Squares[6]}
+              <Square
+                value={squares[6]}
                 onSquareClick={() => {
                   handleClick(6);
                 }}
               />
-              <Squares
-                value={Squares[7]}
+              <Square
+                value={squares[7]}
                 onSquareClick={() => {
                   handleClick(7);
                 }}
               />
-              <Squares
-                value={Squares[8]}
+              <Square
+                value={squares[8]}
                 onSquareClick={() => {
                   handleClick(8);
                 }}
               />
             </div>
-            <Lineswinner />
+            {/* <Lineswinner /> */}
           </div>
         </div>
         {/* ... end */}
@@ -338,7 +346,7 @@ function Lineswinner(Squares) {
 }
 
 //************************************************ Game
-function Game() {
+export default function Game() {
   // const [isStarted, setIsStarted] = useState(false);
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
@@ -365,7 +373,7 @@ function Game() {
         <div className="game-board">
           {/* <Form /> */}
 
-          <Bord
+          <Board
             xIsNext={xIsNext}
             squares={currentSquares}
             onPlay={handlePlay}
@@ -377,4 +385,4 @@ function Game() {
   );
 }
 
-export default Game;
+// export default Game();
