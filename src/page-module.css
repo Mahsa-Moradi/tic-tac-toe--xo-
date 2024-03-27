@@ -412,12 +412,12 @@ div .dot::before {
 
   box-shadow: 0px 0px 20px rgb(64, 255, 22);
 }
-.rondeplayerx {
+/* .rondeplayerx {
   box-shadow: 0px 0px 20px rgb(255, 20, 20);
-}
-.rondeplayero {
+} */
+/* .rondeplayero {
   box-shadow: 0px 0px 20px rgb(64, 255, 22);
-}
+} */
 /*..............................................  */
 /* .table {
   text-align: center;

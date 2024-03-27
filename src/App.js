@@ -182,16 +182,25 @@ function Board({ xIsNext, squares, onPlay }) {
   let status;
   if (winner) {
     status = "Winner: " + winner;
-  }
-   else if (xIsNext) {
-    status = "Next player: X";
   } else {
-    status = "Next player: O";
+    status = "Next player: " + (xIsNext ? "X" : "O");
   }
-
-  // else {
-  //   status = "Next player: " + (xIsNext ? "X" : "O");
+  // ???????????????????????????????
+  //  else if (xIsNext) {
+  //   status = "Next player: X";
+  // } else {
+  //   status = "Next player: O";
   // }
+  // .......................... jh
+  function jh(nextSquares,i) {
+    if (nextSquares[i] == "X") {
+      return <span className="rondeplayerx"></span>;
+    } else {
+      return <span className="rondeplayero"></span>;
+    }
+  }
+  // ............................. rondWinner
+  function rondWinner() {}
   //___________________________________________________return
   return (
     <>
@@ -236,7 +245,14 @@ function Board({ xIsNext, squares, onPlay }) {
             <div>
               {/* 1 a*/}
               <div className=" player">
-                <p className="Next-player ">{status}</p>
+                <p
+                  className="Next-player "
+                  onChange={(e) => {
+                    jh();
+                  }}
+                >
+                  {status}
+                </p>
                 <span className="playerCircle"></span>
               </div>
               {/* 1 b */}
