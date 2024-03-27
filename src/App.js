@@ -117,6 +117,33 @@ function Board({ xIsNext, squares, onPlay }) {
     // onPlay(nextSquares[i]);
     onPlay(nextSquares);
   }
+  // .......................... jh
+  function jh(nextSquares, i) {
+    if (nextSquares[i] == "X") {
+      return <span className="rondeplayerx"></span>;
+    } else {
+      return <span className="rondeplayero"></span>;
+    }
+  }
+  // ........................................ rondwinner
+  function rondwinner() {
+    const Winner = Lineswinner(squares);
+    const [scoreO, setScoreO] = useState(0);
+    const [scoreX, setScoreX] = useState(0);
+    if (Winner) {
+      // status = "Winner X" + Winner;
+      if (Winner == "X") {
+        setScoreX(scoreX + 1);
+      } else {
+        setScoreO(scoreO + 1);
+      }
+    } else {
+      status = "Winner" + "__";
+
+      status = `Next player :  + ${XInput ? XName + "(X)" : OName + "(O)"}`;
+    }
+  }
+
   //   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  ???????
   //   // ............................ namePlayer
   // function namePlayer(players, XName, OName) {
@@ -191,16 +218,9 @@ function Board({ xIsNext, squares, onPlay }) {
   // } else {
   //   status = "Next player: O";
   // }
-  // .......................... jh
-  function jh(nextSquares,i) {
-    if (nextSquares[i] == "X") {
-      return <span className="rondeplayerx"></span>;
-    } else {
-      return <span className="rondeplayero"></span>;
-    }
-  }
+
   // ............................. rondWinner
-  function rondWinner() {}
+  // function rondWinner() {}
   //___________________________________________________return
   return (
     <>
