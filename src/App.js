@@ -10,6 +10,7 @@ import "./page-module.css";
 function Form() {
   const [XName, setXName] = useState("");
   const [OName, setOName] = useState("");
+  // ??????????????????????????????????????
   function handleSubmite() {
     // event.preventDefault();
     // onstart({ x: XName, o: OName });
@@ -97,53 +98,82 @@ function Square({ value, onSquareClick }) {
 }
 // ********************************************** Bord
 
-function Board({ xIsNext, squares, onPlay }) {
+function Board({ xIsNext, squares, onPlay,onReset }) {
+  const [scoreO, setScoreO] = useState(0);
+  const [scoreX, setScoreX] = useState(0);
+  const [turn, setTurn] = useState("X");
+
   // ............................ XInput
   function handleClick(i) {
     if (Lineswinner(squares) || squares[i]) {
+      rondwinner();
+      onReset();
       return;
     }
-    let xOPlay;
+    // let xOPlay;
     const nextSquares = squares.slice();
     if (xIsNext) {
       nextSquares[i] = "X";
-      xOPlay = nextSquares[i];
+      // xOPlay = nextSquares[i];
     } else {
       nextSquares[i] = "O";
-      xOPlay = nextSquares[i];
+      // xOPlay = nextSquares[i];
     }
     // setXInput(nextSquares);
     // setSquares(XInput);
     // onPlay(nextSquares[i]);
     onPlay(nextSquares);
+    setTurn(nextSquares[i]);
   }
   // .......................... jh
-  function jh(nextSquares, i) {
-    if (nextSquares[i] == "X") {
-      return <span className="rondeplayerx"></span>;
+  function Jh({ turn }) {
+    if (turn == "X") {
+      return <span className="playerCircle rondeplayerx"></span>;
     } else {
-      return <span className="rondeplayero"></span>;
+      return <span className="playerCircle  rondeplayero"></span>;
     }
   }
   // ........................................ rondwinner
   function rondwinner() {
     const Winner = Lineswinner(squares);
-    const [scoreO, setScoreO] = useState(0);
-    const [scoreX, setScoreX] = useState(0);
+console.log(Winner);
     if (Winner) {
-      // status = "Winner X" + Winner;
+      // turn = "Winner X" + Winner;
       if (Winner == "X") {
         setScoreX(scoreX + 1);
       } else {
         setScoreO(scoreO + 1);
       }
-    } else {
-      status = "Winner" + "__";
-
-      status = `Next player :  + ${XInput ? XName + "(X)" : OName + "(O)"}`;
     }
-  }
+    // else {
+    //   status = "Winner" + "__";
 
+    //   status = `Next player :  + ${XInput ? XName + "(X)" : OName + "(O)"}`;
+    // }
+  }
+  // ........................................ winner
+  // const winner = calculateWinner(squares);
+  // ********** !!!!!!!!!!!!!!!!!
+  // const winner = Lineswinner(squares);
+
+  // let status;
+  // if (winner) {
+  //   status = "Winner: " + winner;
+  // } else {
+  //   status = "Next player: " + (xIsNext ? "X" : "O");
+  // }
+  // ********** !!!!!!!!!!!!!!!
+
+  // ???????????????????????????????
+  //  else if (xIsNext) {
+  //   status = "Next player: X";
+  // } else {
+  //   status = "Next player: O";
+  // }
+
+  // ............................. rondWinner
+  // function rondWinner() {}
+  //
   //   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  ???????
   //   // ............................ namePlayer
   // function namePlayer(players, XName, OName) {
@@ -202,26 +232,7 @@ function Board({ xIsNext, squares, onPlay }) {
   //     rond = "??";
   //   }
   // }
-  // ........................................ winner
-  // const winner = calculateWinner(squares);
-  const winner = Lineswinner(squares);
-
-  let status;
-  if (winner) {
-    status = "Winner: " + winner;
-  } else {
-    status = "Next player: " + (xIsNext ? "X" : "O");
-  }
-  // ???????????????????????????????
-  //  else if (xIsNext) {
-  //   status = "Next player: X";
-  // } else {
-  //   status = "Next player: O";
-  // }
-
-  // ............................. rondWinner
-  // function rondWinner() {}
-  //___________________________________________________return
+  // ___________________________________________________return
   return (
     <>
       <div>
@@ -265,20 +276,14 @@ function Board({ xIsNext, squares, onPlay }) {
             <div>
               {/* 1 a*/}
               <div className=" player">
-                <p
-                  className="Next-player "
-                  onChange={(e) => {
-                    jh();
-                  }}
-                >
-                  {status}
-                </p>
-                <span className="playerCircle"></span>
+                <p className="Next-player ">{turn}</p>
+                {/* <span className="playerCircle" ></span> */}
+                <Jh turn={turn}></Jh>
               </div>
               {/* 1 b */}
               <div className="row-info">
-                <div className="winplayer">{status}</div>
-                <div className="winplayer">{status}</div>
+                <div className="winplayer">X : {scoreX}</div>
+                <div className="winplayer">O : {scoreO}</div>
               </div>
             </div>
 
@@ -392,6 +397,9 @@ export default function Game() {
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
   }
+  function onReset(){
+    setHistory([Array(9).fill(null)])
+  }
   return (
     <>
       {/* {!isStarted && <Form />}
@@ -412,6 +420,7 @@ export default function Game() {
             xIsNext={xIsNext}
             squares={currentSquares}
             onPlay={handlePlay}
+            onReset={onReset}
           />
           {/* <Lineswinner /> */}
         </div>

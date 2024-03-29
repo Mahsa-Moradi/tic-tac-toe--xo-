@@ -383,11 +383,16 @@ div .dot::before {
   flex-direction: row;
   padding-top: 30px;
 }
+.row-info div:nth-child(1){
+  border-right: 2px solid rgb(152, 152, 152);
+
+}
 .winplayer {
   flex-basis: 50%;
   display: flex;
   /* text-align: center; */
   justify-content: center;
+
 }
 .wincircle {
   background-color: rgb(215, 215, 215);
@@ -404,12 +409,10 @@ div .dot::before {
 /* ?????????????????????????????   scale */
 .rondeplayerx {
   background-color: rgb(254, 0, 0);
-
   box-shadow: 10px 10px 200px rgb(255, 255, 255);
 }
 .rondeplayero {
   background-color: rgb(21, 255, 8);
-
   box-shadow: 0px 0px 20px rgb(64, 255, 22);
 }
 /* .rondeplayerx {
