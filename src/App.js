@@ -1,5 +1,8 @@
 "use client";
 import { useState } from "react";
+import Sound from "./music/mixkit-game-click-1114.wav";
+import Sound from "./music/pick-92276.mp3";
+
 // import "./App.css";
 import "./page-module.css";
 // import styles from "./App.css";
@@ -96,13 +99,21 @@ function Square({ value, onSquareClick }) {
     </button>
   );
 }
+// .......... play Audio
+// play music
+function Play(){
+  new Audio(Sound).play()
+}
 // ********************************************** Bord
 
-function Board({ xIsNext, squares, onPlay,onReset }) {
+function Board({ xIsNext, squares, onPlay, onReset }) {
   const [scoreO, setScoreO] = useState(0);
   const [scoreX, setScoreX] = useState(0);
   const [turn, setTurn] = useState("X");
-
+  // play music
+  // function Play(){
+  //   new Audio(sound).play()
+  // }
   // ............................ XInput
   function handleClick(i) {
     // let xOPlay;
@@ -122,7 +133,7 @@ function Board({ xIsNext, squares, onPlay,onReset }) {
     if (Lineswinner(squares) || squares[i]) {
       rondwinner();
       onReset();
-      setTurn("X")
+      setTurn("X");
       return;
     }
   }
@@ -137,7 +148,7 @@ function Board({ xIsNext, squares, onPlay,onReset }) {
   // ........................................ rondwinner
   function rondwinner() {
     const Winner = Lineswinner(squares);
-console.log(Winner);
+    console.log(Winner);
     if (Winner) {
       // turn = "Winner X" + Winner;
       if (Winner == "X") {
@@ -239,6 +250,17 @@ console.log(Winner);
       <div>
         {/*start babel */}
         <section className="wrapper">
+          {/* music */}
+          {/* <audio className="audio" controls="controls" autoplay>
+            <source src="music/mixkit-game-click-1114.wav" type="audio/ogg" />
+            <source src="music/pick-92276.mp3" type="audio/mp3" />
+          </audio> */}
+<div className="App">
+  {/* <button onClick={()=>{}}>play sound</button> */}
+  <button onClick={Play}>play sound</button>
+
+</div>
+          {/* ballon */}
           <div>
             <span className="dot">X O</span>
           </div>
@@ -277,14 +299,14 @@ console.log(Winner);
             <div>
               {/* 1 a*/}
               <div className=" player">
-                <p className="Next-player ">{turn}</p>
+                <p className="Next-player ">Next player is : {turn}</p>
                 {/* <span className="playerCircle" ></span> */}
                 <Jh turn={turn}></Jh>
               </div>
               {/* 1 b */}
               <div className="row-info">
-                <div className="winplayer">X : {scoreX}</div>
-                <div className="winplayer">O : {scoreO}</div>
+                <div className="winplayer">Number of wins X : {scoreX}</div>
+                <div className="winplayer">Number of wins O : {scoreO}</div>
               </div>
             </div>
 
@@ -398,9 +420,9 @@ export default function Game() {
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
   }
-  function onReset(){
+  function onReset() {
     setHistory([Array(9).fill(null)]);
-    setCurrentMove(0)
+    setCurrentMove(0);
   }
   return (
     <>
