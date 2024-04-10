@@ -105,11 +105,6 @@ function Board({ xIsNext, squares, onPlay,onReset }) {
 
   // ............................ XInput
   function handleClick(i) {
-    if (Lineswinner(squares) || squares[i]) {
-      rondwinner();
-      onReset();
-      return;
-    }
     // let xOPlay;
     const nextSquares = squares.slice();
     if (xIsNext) {
@@ -124,6 +119,12 @@ function Board({ xIsNext, squares, onPlay,onReset }) {
     // onPlay(nextSquares[i]);
     onPlay(nextSquares);
     setTurn(nextSquares[i]);
+    if (Lineswinner(squares) || squares[i]) {
+      rondwinner();
+      onReset();
+      setTurn("X")
+      return;
+    }
   }
   // .......................... jh
   function Jh({ turn }) {
@@ -398,7 +399,8 @@ export default function Game() {
     setCurrentMove(nextHistory.length - 1);
   }
   function onReset(){
-    setHistory([Array(9).fill(null)])
+    setHistory([Array(9).fill(null)]);
+    setCurrentMove(0)
   }
   return (
     <>
