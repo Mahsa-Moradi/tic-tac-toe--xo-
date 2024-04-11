@@ -418,3 +418,14 @@ div .dot::before {
   color: white;
   font-size: 60px;
 } */
+.winx{
+background-color: white;
+z-index: 5000;
+position: absolute;
+left: 0;
+top: 0;
+height: 900px;
+}
+/* .wino{
+  
+} */

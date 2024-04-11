@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-import Sound from "./music/mixkit-game-click-1114.wav";
-import Sounde from "./music/pick-92276.mp3";
+import Sound from "./music/mouse-click-153941.mp3";
+import Sounde from "./music/mixkit-game-click-1114.wav";
+import SoundWin from "./music/success-fanfare-trumpets-6185.mp3";
 // import "./App.css";
 import "./page-module.css";
 // import styles from "./App.css";
@@ -119,12 +120,12 @@ function Board({ xIsNext, squares, onPlay, onReset }) {
     const nextSquares = squares.slice();
     if (xIsNext) {
       nextSquares[i] = "X";
-      new Audio(Sound).play()
+      new Audio(Sound).play();
 
       // xOPlay = nextSquares[i];
     } else {
       nextSquares[i] = "O";
-      new Audio(Sounde).play()
+      new Audio(Sounde).play();
 
       // xOPlay = nextSquares[i];
     }
@@ -153,11 +154,15 @@ function Board({ xIsNext, squares, onPlay, onReset }) {
     const Winner = Lineswinner(squares);
     console.log(Winner);
     if (Winner) {
+      new Audio(SoundWin).play();
+
       // turn = "Winner X" + Winner;
       if (Winner == "X") {
         setScoreX(scoreX + 1);
+        return <span className="container winx "></span>;
       } else {
         setScoreO(scoreO + 1);
+        return <span className="container wino"></span>;
       }
     }
     // else {
@@ -251,7 +256,27 @@ function Board({ xIsNext, squares, onPlay, onReset }) {
   return (
     <>
       <div>
-        {/*start babel */}
+        <span className="container winx ">
+          <div>
+            <span className="dot">X O</span>
+          </div>
+          <div>
+            <span className="dot">X O</span>
+          </div>
+          <div>
+            <span className="dot">X O</span>
+          </div>
+          <div>
+            <span className="dot">X O</span>
+          </div>
+          <div>
+            <span className="dot">X O</span>
+          </div>
+          <div>
+            <span className="dot">X O</span>
+          </div>
+        </span>
+        ;{/*start babel */}
         <section className="wrapper">
           {/* music */}
           {/* <audio className="audio" controls="controls" autoplay>
