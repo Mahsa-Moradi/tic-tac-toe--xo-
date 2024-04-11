@@ -239,6 +239,11 @@ div .dot::before {
 /* .audio{
   display: none;
 } */
+.buttonPlay{
+  background-color: red;
+  color: white;
+  z-index: 5000;
+}
 .board-flex {
   display: flex;
   justify-content: center;

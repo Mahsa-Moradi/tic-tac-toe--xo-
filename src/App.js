@@ -1,8 +1,7 @@
 "use client";
 import { useState } from "react";
 import Sound from "./music/mixkit-game-click-1114.wav";
-import Sound from "./music/pick-92276.mp3";
-
+import Sounde from "./music/pick-92276.mp3";
 // import "./App.css";
 import "./page-module.css";
 // import styles from "./App.css";
@@ -101,9 +100,9 @@ function Square({ value, onSquareClick }) {
 }
 // .......... play Audio
 // play music
-function Play(){
-  new Audio(Sound).play()
-}
+// function Play(){
+//   new Audio(Sound).play()
+// }
 // ********************************************** Bord
 
 function Board({ xIsNext, squares, onPlay, onReset }) {
@@ -120,9 +119,13 @@ function Board({ xIsNext, squares, onPlay, onReset }) {
     const nextSquares = squares.slice();
     if (xIsNext) {
       nextSquares[i] = "X";
+      new Audio(Sound).play()
+
       // xOPlay = nextSquares[i];
     } else {
       nextSquares[i] = "O";
+      new Audio(Sounde).play()
+
       // xOPlay = nextSquares[i];
     }
     // setXInput(nextSquares);
@@ -255,11 +258,7 @@ function Board({ xIsNext, squares, onPlay, onReset }) {
             <source src="music/mixkit-game-click-1114.wav" type="audio/ogg" />
             <source src="music/pick-92276.mp3" type="audio/mp3" />
           </audio> */}
-<div className="App">
-  {/* <button onClick={()=>{}}>play sound</button> */}
-  <button onClick={Play}>play sound</button>
 
-</div>
           {/* ballon */}
           <div>
             <span className="dot">X O</span>
