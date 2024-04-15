@@ -3,6 +3,8 @@ import { useState } from "react";
 import Sound from "./music/mouse-click-153941.mp3";
 import Sounde from "./music/mixkit-game-click-1114.wav";
 import SoundWin from "./music/success-fanfare-trumpets-6185.mp3";
+import movies from "./music/1110681729-preview.mp4";
+
 // import "./App.css";
 import "./page-module.css";
 // import styles from "./App.css";
@@ -159,7 +161,9 @@ function Board({ xIsNext, squares, onPlay, onReset }) {
       // turn = "Winner X" + Winner;
       if (Winner == "X") {
         setScoreX(scoreX + 1);
-        return <span className="container winx "></span>;
+        return <span className="container winx "></span>,
+        <span className="winxP">congratulations</span>
+        
       } else {
         setScoreO(scoreO + 1);
         return <span className="container wino"></span>;
@@ -255,28 +259,8 @@ function Board({ xIsNext, squares, onPlay, onReset }) {
   // ___________________________________________________return
   return (
     <>
-      <div>
-        <span className="container winx ">
-          <div>
-            <span className="dot">X O</span>
-          </div>
-          <div>
-            <span className="dot">X O</span>
-          </div>
-          <div>
-            <span className="dot">X O</span>
-          </div>
-          <div>
-            <span className="dot">X O</span>
-          </div>
-          <div>
-            <span className="dot">X O</span>
-          </div>
-          <div>
-            <span className="dot">X O</span>
-          </div>
-        </span>
-        ;{/*start babel */}
+      <div className="container">
+        {/*start babel */}
         <section className="wrapper">
           {/* music */}
           {/* <audio className="audio" controls="controls" autoplay>

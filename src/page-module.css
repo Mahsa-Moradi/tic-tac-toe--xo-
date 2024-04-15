@@ -53,17 +53,20 @@ div .dot::before {
   top: 20%;
   left: 20%;
   animation: animate 8s linear infinite;
+  -webkit-animation: animate 8s linear infinite;
 }
 .wrapper div:nth-child(2) {
   top: 20%;
-  left: 20%;
+  left: 30%;
   animation: animate 8s linear infinite;
+  -webkit-animation: animate 8s linear infinite;
 }
 
 .wrapper div:nth-child(3) {
   top: 60%;
   left: 80%;
   animation: animate 10s linear infinite;
+  -webkit-animation: animate 10s linear infinite;
 }
 
 .wrapper div:nth-child(4) {
@@ -77,12 +80,14 @@ div .dot::before {
   top: 66%;
   left: 30%;
   animation: animate 7s linear infinite;
+  -webkit-animation: animate 7s linear infinite;
 }
 
 .wrapper div:nth-child(6) {
   top: 90%;
   left: 10%;
   animation: animate 9s linear infinite;
+  -webkit-animation: animate 9s linear infinite;
 }
 .wrapper div:nth-child(7) {
   top: 30%;
@@ -94,12 +99,14 @@ div .dot::before {
   top: 70%;
   left: 20%;
   animation: animate 8s linear infinite;
+  -webkit-animation: animate 8s linear infinite;
 }
 
 .wrapper div:nth-child(9) {
   top: 75%;
   left: 60%;
   animation: animate 10s linear infinite;
+  -webkit-animation: animate 10s linear infinite;
 }
 
 .wrapper div:nth-child(10) {
@@ -239,7 +246,7 @@ div .dot::before {
 /* .audio{
   display: none;
 } */
-.buttonPlay{
+.buttonPlay {
   background-color: red;
   color: white;
   z-index: 5000;
@@ -370,16 +377,14 @@ div .dot::before {
   flex-direction: row;
   padding-top: 30px;
 }
-.row-info div:nth-child(1){
+.row-info div:nth-child(1) {
   border-right: 2px solid rgb(152, 152, 152);
-
 }
 .winplayer {
   flex-basis: 50%;
   display: flex;
   /* text-align: center; */
   justify-content: center;
-
 }
 .wincircle {
   background-color: rgb(215, 215, 215);
@@ -418,14 +423,63 @@ div .dot::before {
   color: white;
   font-size: 60px;
 } */
-.winx{
-background-color: white;
-z-index: 5000;
-position: absolute;
-left: 0;
-top: 0;
-height: 900px;
+.winx {
+  height: 100%;
+  width: 100%;
+  /* background-color: #141c29; */
+  /* position:absolute; */
+  z-index: 5000;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 900px;
 }
+.winx video {
+  width: 100%;
+  
+}
+.winxP {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 10px;
+  display: block;
+  width: 10%;
+  height: 2%;
+  text-align: center;
+  /*margin: 0 auto;
+  transform: translate(50%,50%);
+  -webkit-transform: translate(50%,50%);
+  -moz-transform: translate(50%,5 0%);
+  -ms-transform: translate(50%,50%);
+  -o-transform: translate(50%,50%);
+  */
+  animation: congratulations 2s linear infinite;
+  -webkit-animation: congratulations 2s linear infinite;
+}
+@keyframes congratulations {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+}
+  100% {
+    opacity: 1;
+    transform: scale(5);
+    -webkit-transform: scale(5);
+    -moz-transform: scale(5);
+    -ms-transform: scale(5);
+    -o-transform: scale(5);
+  }
+}
+
+
+
+
 /* .wino{
   
 } */
