@@ -158,26 +158,21 @@ div .dot::before {
 
 .formlist {
   position: absolute;
+  top: 30%;
+  left: 30%;
+ 
+  /* transform: translate(50%, 50%); */
   padding: 0 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  /* width: calc(100%-275px); */
   width: 500px;
   height: 400px;
   box-shadow: -1px -1px 120px rgba(238, 238, 238, 0.49);
   border: 8px solid rgb(35, 35, 40);
   background-color: rgba(40, 35, 77, 0.332);
-}
-.formstyle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  padding: 10px 50px;
-  box-shadow: 2px 3px 3px rgba(201, 201, 201, 0.49);
-  background-color: rgb(255, 255, 255);
 }
 .lablelist input {
   width: 100%;
@@ -436,7 +431,6 @@ div .dot::before {
 }
 .winx video {
   width: 100%;
-  
 }
 .winxP {
   color: white;
@@ -466,7 +460,7 @@ div .dot::before {
     -moz-transform: scale(0);
     -ms-transform: scale(0);
     -o-transform: scale(0);
-}
+  }
   100% {
     opacity: 1;
     transform: scale(5);
@@ -476,9 +470,6 @@ div .dot::before {
     -o-transform: scale(5);
   }
 }
-
-
-
 
 /* .wino{
   

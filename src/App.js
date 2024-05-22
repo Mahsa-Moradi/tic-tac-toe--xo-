@@ -12,14 +12,24 @@ import "./page-module.css";
 // import logo from "./logo.svg";
 // ********************************************* Form
 // function Form({ onStart , value}) {
-function Form() {
+function Form(onstart) {
   const [XName, setXName] = useState("");
   const [OName, setOName] = useState("");
   // ??????????????????????????????????????
   function handleSubmite() {
     // event.preventDefault();
-    // onstart({ x: XName, o: OName });
+    onstart({ x: XName, o: OName });
+    // ............................ player
+  function player(nextSquares, i) {
+    if (nextSquares[i] == "X") {
+      return onstart[0];
+      // return setXName
+    } else {
+      return onstart[1];
+    }
   }
+  }
+  
   return (
     <>
       <div className="container">
@@ -59,7 +69,7 @@ function Form() {
         {/*end babel */}
         {/* ............................... */}
         {/* start form */}
-        <form className="formlist">
+        <form className="formlist ">
           {/* 1 */}
           {/* <label className={styles.form} onSubmit={handleSubmite}> */}
           <label className="lablelist">
@@ -111,11 +121,8 @@ function Square({ value, onSquareClick }) {
 function Board({ xIsNext, squares, onPlay, onReset }) {
   const [scoreO, setScoreO] = useState(0);
   const [scoreX, setScoreX] = useState(0);
-  const [turn, setTurn] = useState("X");
-  // play music
-  // function Play(){
-  //   new Audio(sound).play()
-  // }
+  const [turn, setTurn] = useState("XName");
+
   // ............................ XInput
   function handleClick(i) {
     // let xOPlay;
@@ -157,13 +164,11 @@ function Board({ xIsNext, squares, onPlay, onReset }) {
     console.log(Winner);
     if (Winner) {
       new Audio(SoundWin).play();
-
+      <span className="winx">congratulations </span>;
       // turn = "Winner X" + Winner;
       if (Winner == "X") {
         setScoreX(scoreX + 1);
-        return <span className="container winx "></span>,
-        <span className="winxP">congratulations</span>
-        
+        return <span className="container winx "></span>;
       } else {
         setScoreO(scoreO + 1);
         return <span className="container wino"></span>;
@@ -307,7 +312,8 @@ function Board({ xIsNext, squares, onPlay, onReset }) {
             <div>
               {/* 1 a*/}
               <div className=" player">
-                <p className="Next-player ">Next player is : {turn}</p>
+                <p className="Next-player ">Next player is : {player}</p>
+                {/* <p className="Next-player ">Next player is : {turn}</p> */}
                 {/* <span className="playerCircle" ></span> */}
                 <Jh turn={turn}></Jh>
               </div>
@@ -417,7 +423,7 @@ function Lineswinner(squares) {
 
 //************************************************ Game
 export default function Game() {
-  // const [isStarted, setIsStarted] = useState(false);
+  const [isStarted, setIsStarted] = useState(false);
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
   const xIsNext = currentMove % 2 === 0;
@@ -434,29 +440,19 @@ export default function Game() {
   }
   return (
     <>
-      {/* {!isStarted && <Form />}
+      {!isStarted && <Form onstart={player} />}
       {isStarted && (
         <div className="game">
           <div className="game-board">
-          <Bord />
-           <Lineswinner/> 
+            <Board
+              xIsNext={xIsNext}
+              squares={currentSquares}
+              onPlay={handlePlay}
+              onReset={onReset}
+            />
           </div>
         </div>
-      )} */}
-      {/* ..................................... */}
-      <div className="game">
-        <div className="game-board">
-          {/* <Form /> */}
-
-          <Board
-            xIsNext={xIsNext}
-            squares={currentSquares}
-            onPlay={handlePlay}
-            onReset={onReset}
-          />
-          {/* <Lineswinner /> */}
-        </div>
-      </div>
+      )}
     </>
   );
 }
